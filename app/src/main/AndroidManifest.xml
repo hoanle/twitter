@@ -40,7 +40,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="cprest"
+                    android:host="yaritest"
                     android:scheme="oauth" />
             </intent-filter>
         </activity>

@@ -1,11 +1,15 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
 import com.codepath.oauth.OAuthLoginActionBarActivity;
 import com.codepath.oauth.OAuthLoginActivity;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
+import org.apache.http.Header;
 
 public class LoginActivity extends OAuthLoginActionBarActivity<RestClient> {
 
@@ -29,6 +33,18 @@ public class LoginActivity extends OAuthLoginActionBarActivity<RestClient> {
 	public void onLoginSuccess() {
 		// Intent i = new Intent(this, PhotosActivity.class);
 		// startActivity(i);
+
+		RestApplication.getRestClient().getHomeTimeline(new AsyncHttpResponseHandler() {
+			@Override
+			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+				Log.d("2359", "test");
+			}
+
+			@Override
+			public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+			}
+		});
 	}
 
 	// OAuth authentication flow failed, handle the error

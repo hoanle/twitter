@@ -2,6 +2,7 @@ package com.codepath.apps.restclienttemplate;
 
 import org.scribe.builder.api.Api;
 import org.scribe.builder.api.FlickrApi;
+import org.scribe.builder.api.TwitterApi;
 
 import android.content.Context;
 
@@ -22,16 +23,21 @@ import com.loopj.android.http.RequestParams;
  * 
  */
 public class RestClient extends OAuthBaseClient {
-	public static final Class<? extends Api> REST_API_CLASS = FlickrApi.class; // Change this
-	public static final String REST_URL = "http://api.flickr.com/services"; // Change this, base API URL
-	public static final String REST_CONSUMER_KEY = "SOME_KEY";       // Change this
-	public static final String REST_CONSUMER_SECRET = "SOME_SECRET"; // Change this
-	public static final String REST_CALLBACK_URL = "oauth://cprest"; // Change this (here and in manifest)
+	public static final Class<? extends Api> REST_API_CLASS = TwitterApi.class; // Change this
+	public static final String REST_URL = "https://api.twitter.com/1.1"; // Change this, base API URL
+	public static final String REST_CONSUMER_KEY = "B6EByNFMouOD8h2nK1Cu8IXTt";       // Change this
+	public static final String REST_CONSUMER_SECRET = "hA3VvdYV2hMllbHwqKe5CNXaqQxNoqaBh01fNR3NNoj95qT5w7"; // Change this
+	public static final String REST_CALLBACK_URL = "oauth://yaritest"; // Change this (here and in manifest)
 
 	public RestClient(Context context) {
 		super(context, REST_API_CLASS, REST_URL, REST_CONSUMER_KEY, REST_CONSUMER_SECRET, REST_CALLBACK_URL);
 	}
 
+	public void getHomeTimeline(AsyncHttpResponseHandler hanlder){
+		String apiUrl = getApiUrl("statuses/home_timeline.json");
+		client.get(apiUrl, null, hanlder);
+
+	}
 	// CHANGE THIS
 	// DEFINE METHODS for different API endpoints here
 	public void getInterestingnessList(AsyncHttpResponseHandler handler) {
