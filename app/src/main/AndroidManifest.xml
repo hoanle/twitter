@@ -44,6 +44,7 @@
                     android:scheme="oauth" />
             </intent-filter>
         </activity>
+        <activity android:name=".BlankActivity"></activity>
     </application>
 
 </manifest>
